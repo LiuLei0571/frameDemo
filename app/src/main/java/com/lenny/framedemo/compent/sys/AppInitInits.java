@@ -2,7 +2,6 @@ package com.lenny.framedemo.compent.sys;
 
 import android.content.Context;
 
-import com.lenny.framedemo.compent.IAppinits;
 import com.lenny.framedemo.compent.sys.impl.CrashHandlerInit;
 import com.lenny.framedemo.compent.sys.impl.FrameWorkInit;
 

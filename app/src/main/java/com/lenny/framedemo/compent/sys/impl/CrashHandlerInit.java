@@ -2,7 +2,7 @@ package com.lenny.framedemo.compent.sys.impl;
 
 import android.content.Context;
 
-import com.lenny.framedemo.compent.IAppinits;
+import com.lenny.framedemo.compent.sys.IAppinits;
 
 /**
  * 用途：异常初始化
