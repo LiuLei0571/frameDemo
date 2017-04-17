@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.StrictMode;
 
 import com.lenny.framedemo.common.ThreadUtil;
+import com.lenny.framedemo.compent.constants.Configs;
+import com.lenny.framedemo.compent.sys.AppInitInits;
 
 /**
  * 用途：
@@ -26,9 +29,29 @@ public class App extends Application {
         super.onCreate();
         sContext = getApplicationContext();
         if (ThreadUtil.getIsChildProcess(sContext)) {
-            
+
         }
+        AppInitInits.doInit(sContext,AppInitInits.init_app);
+        initStrict();
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
+    }
+
+    private void initStrict() {
+        if (Configs.RELEASE) {
+            return;
+        }
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectDiskReads()
+                .detectDiskWrites()
+                .detectNetwork()
+                .detectAll()
+                .penaltyLog()
+                .build());
+        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+                .detectLeakedSqlLiteObjects()
+                .detectAll()
+                .penaltyLog()
+                .build());
     }
 
     //监听activity的个数

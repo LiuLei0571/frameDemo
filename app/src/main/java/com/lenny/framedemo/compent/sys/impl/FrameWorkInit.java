@@ -3,6 +3,7 @@ package com.lenny.framedemo.compent.sys.impl;
 import android.content.Context;
 
 import com.lenny.framedemo.common.helper.ContextHelper;
+import com.lenny.framedemo.compent.cdi.CDI;
 import com.lenny.framedemo.compent.constants.Configs;
 import com.lenny.framedemo.compent.sys.IAppinits;
 
@@ -19,5 +20,6 @@ public class FrameWorkInit implements IAppinits {
     public void init(Context appContext) {
         Icepick.setDebug(Configs.LOG_D);
         ContextHelper.setContext(appContext);
+        CDI.init(appContext);
     }
 }

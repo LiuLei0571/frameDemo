@@ -50,7 +50,7 @@ public class ActivityModule {
 
     @Provides
     @ActivityScope
-    IView provideIview() {
+    IView provideIView() {
         return activity;
     }
 }

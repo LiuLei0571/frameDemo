@@ -15,5 +15,12 @@ import dagger.Component;
 @Component(modules = {ManagerModule.class, AppModule.class})
 public interface AppComponent {
     ActivityComponent plus(ActivityModule activityModule);
+
+    FragmentComponent plus(FragmentModule fragmentModule);
+
+    DialogComponent plus(DialogModule dialogModule);
+
+    ServiceComponent plus(ServiceModule serviceModule);
+
     void plus(CDIHelper instance);
 }
