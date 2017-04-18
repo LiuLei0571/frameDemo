@@ -32,7 +32,10 @@ public class CDI {
     public static void init(Context context) {
         AppModule appModule = new AppModule(context);
         ManagerModule managerModule = new ManagerModule();
-        sAppComponent = DaggerAppComponent.builder().appModule(appModule).managerModule(managerModule).build();
+        sAppComponent = DaggerAppComponent.builder()
+                .appModule(appModule)
+                .managerModule(managerModule)
+                .build();
     }
 
     public static ActivityComponent createActivityComponent(BaseActivity activity) {

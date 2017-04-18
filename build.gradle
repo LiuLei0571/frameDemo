@@ -30,6 +30,6 @@ ext {
     supportVersion = "25.3.1"
     minSdkVersion = 17
     targetSdkVersion = 22
-    versionCode = 46
+    versionCode = 1
     versionName = "1.0"
 }

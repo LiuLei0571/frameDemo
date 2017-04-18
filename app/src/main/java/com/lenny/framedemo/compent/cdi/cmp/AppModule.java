@@ -2,7 +2,13 @@ package com.lenny.framedemo.compent.cdi.cmp;
 
 import android.content.Context;
 
+import com.lenny.framedemo.common.event.IEvent;
+import com.lenny.framedemo.common.event.impl.EventBusImpl;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
+import dagger.Provides;
 
 /**
  * 用途：
@@ -15,5 +21,10 @@ public class AppModule {
 
     public AppModule(Context context) {
         mContext = context;
+    }
+    @Provides
+    @Singleton
+    protected IEvent provideEvenBus(){
+        return new EventBusImpl(de.greenrobot.event.EventBus.getDefault());
     }
 }
