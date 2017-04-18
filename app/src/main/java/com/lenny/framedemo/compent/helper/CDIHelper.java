@@ -1,6 +1,11 @@
 package com.lenny.framedemo.compent.helper;
 
+import com.lenny.framedemo.common.event.IEvent;
+import com.lenny.framedemo.common.image.ImageDisplayLoader;
+import com.lenny.framedemo.common.parse.IParse;
 import com.lenny.framedemo.compent.cdi.CDI;
+
+import javax.inject.Inject;
 
 /**
  * 用途：
@@ -9,6 +14,12 @@ import com.lenny.framedemo.compent.cdi.CDI;
  */
 
 public final class CDIHelper {
+    @Inject
+    IParse mIParse;
+    @Inject
+    IEvent mIEvent;
+    @Inject
+    ImageDisplayLoader mImageDisplayLoader;
     private static CDIHelper instance = null;
 
     public CDIHelper() {

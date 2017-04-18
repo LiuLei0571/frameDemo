@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.lenny.framedemo.common.event.IEvent;
 import com.lenny.framedemo.common.event.impl.EventBusImpl;
+import com.lenny.framedemo.common.image.ImageDisplayLoader;
+import com.lenny.framedemo.common.image.glide.GlideImageLoader;
 import com.lenny.framedemo.common.parse.IParse;
 import com.lenny.framedemo.common.parse.impl.FastJsonParse;
 
@@ -21,17 +23,30 @@ import dagger.Provides;
 public class AppModule {
     private final Context mContext;
 
+//    @Provides
+//    @Singleton
+//    protected
+
     public AppModule(Context context) {
         mContext = context;
     }
+
     @Provides
     @Singleton
-    protected IEvent provideEvenBus(){
+    protected IEvent provideEvenBus() {
         return new EventBusImpl(de.greenrobot.event.EventBus.getDefault());
     }
+
     @Provides
     @Singleton
-    protected IParse provideFastJson(){
+    protected IParse provideFastJson() {
         return new FastJsonParse();
+    }
+
+    @Provides
+    @Singleton
+    protected ImageDisplayLoader provideImageLoader() {
+        GlideImageLoader imageLoader = new GlideImageLoader(mContext);
+        return imageLoader;
     }
 }
