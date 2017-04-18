@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.lenny.framedemo.common.event.IEvent;
 import com.lenny.framedemo.common.event.impl.EventBusImpl;
+import com.lenny.framedemo.common.parse.IParse;
+import com.lenny.framedemo.common.parse.impl.FastJsonParse;
 
 import javax.inject.Singleton;
 
@@ -26,5 +28,10 @@ public class AppModule {
     @Singleton
     protected IEvent provideEvenBus(){
         return new EventBusImpl(de.greenrobot.event.EventBus.getDefault());
+    }
+    @Provides
+    @Singleton
+    protected IParse provideFastJson(){
+        return new FastJsonParse();
     }
 }
