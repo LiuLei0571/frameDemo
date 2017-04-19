@@ -1,5 +1,7 @@
 package com.lenny.framedemo.compent.base;
 
+import android.view.View;
+
 /**
  * 用途：
  * Created by milk on 17/4/19.
@@ -7,4 +9,8 @@ package com.lenny.framedemo.compent.base;
  */
 
 public abstract class TempleActivity extends BaseActivity {
+    @Override
+    public void bindView(View view) {
+        super.bindView(view);
+    }
 }

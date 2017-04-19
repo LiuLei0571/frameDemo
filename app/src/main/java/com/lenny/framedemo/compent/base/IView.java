@@ -12,7 +12,6 @@ import com.lenny.framedemo.common.task.IGroup;
  */
 
 public interface IView extends IGroup, IAct {
-    int getRootLayoutId();
 
     void beforeViewBind(View rootView);
 

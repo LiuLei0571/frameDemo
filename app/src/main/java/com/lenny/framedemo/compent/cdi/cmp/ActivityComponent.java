@@ -1,6 +1,7 @@
 package com.lenny.framedemo.compent.cdi.cmp;
 
 import com.lenny.framedemo.compent.cdi.annotation.ActivityScope;
+import com.lenny.framedemo.project.MainActivity;
 
 import dagger.Subcomponent;
 
@@ -12,4 +13,5 @@ import dagger.Subcomponent;
 @ActivityScope
 @Subcomponent(modules = ActivityModule.class)
 public interface ActivityComponent {
+    void plus(MainActivity mainActivity);
 }
