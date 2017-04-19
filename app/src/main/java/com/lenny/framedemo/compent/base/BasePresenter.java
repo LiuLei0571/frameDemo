@@ -76,4 +76,11 @@ public class BasePresenter<T extends IView> extends BaseViewPresenter<T> {
             }
         }
     }
+
+    public void onSaveInstanceState(Bundle outSate) {
+        
+    }
+
+    public void onActivityForResult(int requestCode, int resultCode, Intent data) {
+    }
 }

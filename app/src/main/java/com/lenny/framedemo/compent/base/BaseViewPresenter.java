@@ -60,4 +60,6 @@ public abstract class BaseViewPresenter<T extends IView> extends BaseSimplePrese
     protected FragmentManager getSupporFragmentManager() {
         return getBaseActivity().getSupportFragmentManager();
     }
+
+
 }
