@@ -18,6 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".compent.base.BaseActivity"/>
+
+        <meta-data
+            android:name=".GlideConfiguration"
+            android:value="GlideModule"/>
     </application>
 
 </manifest>

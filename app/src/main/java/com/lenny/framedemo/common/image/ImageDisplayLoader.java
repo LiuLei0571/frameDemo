@@ -15,7 +15,7 @@ public interface ImageDisplayLoader {
     int CACHE_IN_MEN = 1;
     int CACHE_IN_DISK = 2;
 
-    void display(ImageView imageView, String url, ImageLoadListener listener, DisplayOption option);
+    void display(ImageView imageView, String url, ImageLoadListener listener, DisplayOption option,boolean round,boolean circle);
 
     Bitmap syncLoad(File file);
 

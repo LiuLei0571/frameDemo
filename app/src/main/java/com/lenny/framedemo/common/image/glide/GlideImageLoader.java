@@ -16,6 +16,8 @@ import com.lenny.framedemo.common.helper.ThreadHelper;
 import com.lenny.framedemo.common.image.DisplayOption;
 import com.lenny.framedemo.common.image.ImageDisplayLoader;
 import com.lenny.framedemo.common.image.ImageLoadListener;
+import com.lenny.framedemo.common.image.glide.module.GlideCircleTransform;
+import com.lenny.framedemo.common.image.glide.module.GlideRoundTransform;
 
 import java.io.File;
 
@@ -33,7 +35,7 @@ public class GlideImageLoader implements ImageDisplayLoader {
     }
 
     @Override
-    public void display(ImageView imageView, String url, ImageLoadListener listener, DisplayOption option) {
+    public void display(ImageView imageView, String url, ImageLoadListener listener, DisplayOption option, boolean round, boolean circle) {
         if (imageView != null) {
             DrawableTypeRequest<String> drawableTypeRequest = Glide.with(mContext).load(url);
             if (option != null) {
@@ -77,6 +79,12 @@ public class GlideImageLoader implements ImageDisplayLoader {
                         return false;
                     }
                 });
+            }
+            if (round) {
+                drawableTypeRequest.transform(new GlideCircleTransform(mContext));
+            }
+            if (circle) {
+                drawableTypeRequest.transform(new GlideRoundTransform(mContext));
             }
             drawableTypeRequest.thumbnail(0.4f).dontAnimate().into(imageView);
         }
