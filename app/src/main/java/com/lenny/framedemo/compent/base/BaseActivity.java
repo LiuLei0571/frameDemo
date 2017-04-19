@@ -43,6 +43,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IView, I
         View view = getLayoutInflater().inflate(getRootViewId(), null, false);
         beforeViewBind(view);
         setContentView(view);
+        bindView(view);
         afterViewBind(savedInstanceState);
         mPresenterConnector.bindPresenter(savedInstanceState, getIntent().getExtras());
 

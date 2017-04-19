@@ -67,9 +67,9 @@ public class BasePresenter<T extends IView> extends BaseViewPresenter<T> {
     }
 
     protected void startActivityForResult(Intent intent, int requestCode) {
-        if (mVIew != null) {
-            if (mVIew instanceof IFragment) {
-                IFragment fragment = (IFragment) mVIew;
+        if (mView != null) {
+            if (mView instanceof IFragment) {
+                IFragment fragment = (IFragment) mView;
                 fragment.startActivityForResult(intent, requestCode);
             } else {
                 mBaseActivity.startActivityForResult(intent, requestCode);

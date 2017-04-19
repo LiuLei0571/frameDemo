@@ -15,18 +15,19 @@ import javax.inject.Inject;
 public abstract class BaseViewPresenter<T extends IView> extends BaseSimplePresenter {
     public BaseViewPresenter(IView iView) {
         super(iView);
+        mView = (T) iView;
     }
 
     @Inject
     BaseActivity mBaseActivity;
-    protected T mVIew;
+    protected T mView;
 
-    public T getVIew() {
-        return mVIew;
+    public T getView() {
+        return mView;
     }
 
     public void setVIew(T VIew) {
-        mVIew = VIew;
+        mView = VIew;
     }
 
     protected Context getContext() {
