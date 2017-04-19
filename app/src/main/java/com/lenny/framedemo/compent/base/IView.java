@@ -17,7 +17,7 @@ public interface IView extends IGroup, IAct {
 
     void afterViewBind(Bundle saveInstanceState);
 
-    void findViewId(int id);
+    View findViewId(int id);
 
     void bindView(View view);
 
