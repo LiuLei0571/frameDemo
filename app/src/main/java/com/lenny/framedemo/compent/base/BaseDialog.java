@@ -15,7 +15,7 @@ import android.support.annotation.StyleRes;
 public abstract class BaseDialog  extends Dialog implements IView,ILoading,IDialog{
     private BaseActivity mBaseActivity;
     public BaseDialog(@NonNull Context context) {
-        super(context);
+        this(context,0);
     }
 
     public BaseDialog(@NonNull Context context, @StyleRes int themeResId) {

@@ -1,11 +1,66 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:buttonStyle">@style/Button</item>
+        <item name="android:editTextStyle">@style/EditText</item>
+        <item name="android:textViewStyle">@style/TextView</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:textColorHighlight">@color/color_input_hint</item>
+        <item name="android:disabledAlpha">1dp</item>
     </style>
 
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="LoginDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:disabledAlpha">1</item>
+    </style>
+
+    <style name="right_in_animation" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_right</item>
+    </style>
+
+    <style name="PopupRightAnim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/popup_right_enter</item>
+        <item name="android:windowExitAnimation">@anim/popup_right_exit</item>
+    </style>
+
+    <style name="PopupCenterAnim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/popup_center_enter</item>
+        <item name="android:windowExitAnimation">@anim/popup_center_exit</item>
+    </style>
+
+    <style name="PopupBottomAnim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/popup_bottom_enter</item>
+        <item name="android:windowExitAnimation">@anim/popup_bottom_exit</item>
+    </style>
+
+    <style name="EditText" parent="@android:style/Widget.EditText">
+        <item name="android:textColorHint">@color/color_input_hint</item>
+        <item name="android:textColor">@color/color_text_major</item>
+        <item name="android:textSize">@dimen/size_normal_large</item>
+    </style>
+
+    <style name="TextView" parent="@android:style/Widget.TextView">
+        <item name="android:textColorHint">@color/color_input_hint</item>
+        <item name="android:textColor">@color/color_text_major</item>
+        <item name="android:textSize">@dimen/size_normal_large</item>
+    </style>
+
+    <style name="Button" parent="@android:style/Widget.Button">
+        <item name="android:background">@color/btn_background</item>
+        <item name="android:textColor">@color/color_text_major</item>
+        <item name="android:textSize">@dimen/size_normal_large</item>
+    </style>
 </resources>
