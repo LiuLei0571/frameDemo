@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#ffffff</color>
-    <color name="transparent">#0000000</color>
+    <color name="transparent">#0000</color>
     <color name="btn_background">#44B0A0</color>
     <color name="title_background">#44B0A0</color>
+    <color name="full_back">#f4f5f8</color>
 </resources>

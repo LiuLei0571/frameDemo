@@ -2,13 +2,13 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowBackground">@color/full_back</item>
         <item name="android:buttonStyle">@style/Button</item>
         <item name="android:editTextStyle">@style/EditText</item>
         <item name="android:textViewStyle">@style/TextView</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:textColorHighlight">@color/color_input_hint</item>
-        <item name="android:disabledAlpha">1dp</item>
+        <item name="android:disabledAlpha">1</item>
     </style>
 
     <style name="AppTheme" parent="AppTheme.Base">
@@ -24,6 +24,16 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:textColorSecondary">@color/white</item>
         <item name="android:disabledAlpha">1</item>
+    </style>
+
+    <style name="LoadingDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 
     <style name="right_in_animation" parent="@android:style/Animation">

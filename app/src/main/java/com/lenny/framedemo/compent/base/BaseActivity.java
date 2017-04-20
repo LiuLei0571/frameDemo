@@ -14,6 +14,7 @@ import com.lenny.framedemo.compent.cdi.cmp.ActivityComponent;
 import com.lenny.framedemo.compent.event.EmptyEvent;
 import com.lenny.framedemo.compent.helper.ActivityHelper;
 import com.lenny.framedemo.compent.helper.EventHelper;
+import com.lenny.framedemo.compent.helper.LoadingHelper;
 
 import butterknife.ButterKnife;
 
@@ -190,17 +191,18 @@ public abstract class BaseActivity extends AppCompatActivity implements IView, I
 
     @Override
     public void showLoading() {
-
+        LoadingHelper.showLoading(getBaseActivity());
     }
 
     @Override
     public void showLoading(String content) {
+        LoadingHelper.showLoading(getBaseActivity(),content);
 
     }
 
     @Override
     public void dismissLoading() {
-
+        LoadingHelper.dismiss();
     }
     public void onEvent(EmptyEvent event) {
     }

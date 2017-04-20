@@ -13,6 +13,7 @@ import android.view.View;
 import com.lenny.framedemo.R;
 import com.lenny.framedemo.compent.cdi.CDI;
 import com.lenny.framedemo.compent.cdi.cmp.DialogComponent;
+import com.lenny.framedemo.compent.helper.LoadingHelper;
 
 import butterknife.ButterKnife;
 
@@ -116,17 +117,18 @@ public abstract class BaseDialog extends Dialog implements IView, ILoading, IDia
 
     @Override
     public void showLoading() {
-
+    LoadingHelper.showLoading(getBaseActivity());
     }
 
     @Override
     public void showLoading(String content) {
+        LoadingHelper.showLoading(getBaseActivity(),content);
 
     }
 
     @Override
     public void dismissLoading() {
-
+        LoadingHelper.dismiss();
     }
 
     @Override

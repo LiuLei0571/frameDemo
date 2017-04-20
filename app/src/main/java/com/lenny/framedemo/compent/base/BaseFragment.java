@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.lenny.framedemo.compent.cdi.CDI;
 import com.lenny.framedemo.compent.cdi.cmp.FragmentComponent;
 import com.lenny.framedemo.compent.helper.EventHelper;
+import com.lenny.framedemo.compent.helper.LoadingHelper;
 
 import butterknife.ButterKnife;
 
@@ -151,12 +152,18 @@ public abstract class BaseFragment extends Fragment implements IFragment, ILoadi
 
     @Override
     public void showLoading() {
-
+        LoadingHelper.showLoading(getBaseActivity());
     }
 
     @Override
     public void showLoading(String content) {
+        LoadingHelper.showLoading(getBaseActivity(), content);
 
+    }
+
+    @Override
+    public void dismissLoading() {
+        LoadingHelper.dismiss();
     }
 
     @Override
@@ -165,11 +172,6 @@ public abstract class BaseFragment extends Fragment implements IFragment, ILoadi
         if (context instanceof BaseActivity) {
             mActivity = (BaseActivity) context;
         }
-    }
-
-    @Override
-    public void dismissLoading() {
-
     }
 
     @Override

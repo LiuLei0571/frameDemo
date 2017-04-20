@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_progress">
+
+    <LinearLayout
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.lenny.framedemo.compent.ui.widget.ProgressImage
+            android:id="@+id/progress"
+            android:layout_width="33.3dp"
+            android:layout_height="33.3dp"
+            android:layout_marginBottom="2dip"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dip"
+            android:indeterminate="false"
+            app:pointColor="#FFd7d7d7"/>
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Loading..."
+            android:textColor="#FFd7d7d7"
+            android:textSize="12sp"/>
+    </LinearLayout>
+</RelativeLayout>
