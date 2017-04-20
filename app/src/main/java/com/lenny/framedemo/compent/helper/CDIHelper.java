@@ -4,6 +4,7 @@ import com.lenny.framedemo.common.event.IEvent;
 import com.lenny.framedemo.common.image.ImageDisplayLoader;
 import com.lenny.framedemo.common.parse.IParse;
 import com.lenny.framedemo.compent.cdi.CDI;
+import com.lenny.framedemo.compent.ui.AppToast;
 
 import javax.inject.Inject;
 
@@ -18,6 +19,8 @@ public final class CDIHelper {
     IParse mIParse;
     @Inject
     IEvent mIEvent;
+    @Inject
+    AppToast mAppToast;
     @Inject
     ImageDisplayLoader mImageDisplayLoader;
     private static CDIHelper instance = null;

@@ -8,6 +8,7 @@ import com.lenny.framedemo.common.image.ImageDisplayLoader;
 import com.lenny.framedemo.common.image.glide.GlideImageLoader;
 import com.lenny.framedemo.common.parse.IParse;
 import com.lenny.framedemo.common.parse.impl.FastJsonParse;
+import com.lenny.framedemo.compent.ui.AppToast;
 
 import javax.inject.Singleton;
 
@@ -48,5 +49,11 @@ public class AppModule {
     protected ImageDisplayLoader provideImageLoader() {
         GlideImageLoader imageLoader = new GlideImageLoader(mContext);
         return imageLoader;
+    }
+
+    @Provides
+    @Singleton
+    protected AppToast provideToast() {
+        return new AppToast(mContext);
     }
 }
