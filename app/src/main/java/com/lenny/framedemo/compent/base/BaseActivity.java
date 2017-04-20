@@ -114,8 +114,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IView, I
     }
 
     @Override
-    public void findViewId(int id) {
-
+    public View findViewId(int id) {
+        return null;
     }
 
     @Override
