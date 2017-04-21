@@ -15,7 +15,8 @@ public abstract class ApiCall implements ICall {
         this.httpRequest = httpRequest;
     }
 
-    public IRequest getHttpRequest() {
+    @Override
+    public IRequest getRequest() {
         return httpRequest;
     }
 
@@ -24,8 +25,37 @@ public abstract class ApiCall implements ICall {
         return status;
     }
 
+    @Override
+    public void cancel() {
+        if (status == STATUS_RUNNING) {
+            try {
+                doCancel();
+            } catch (Exception e) {
 
-    protected abstract void doCancle();
+            }
+            status = STATUS_OVER;
+        }
+    }
+
+    protected final void setReady() {
+        if (status == SATUS_NEW) {
+            status = STATUE_READY;
+        }
+    }
+
+    @Override
+    public IResponse execute() throws Exception {
+        IResponse response = null;
+        if (status == STATUE_READY) {
+            status = STATUS_RUNNING;
+            response = doExecute();
+            status = STATUS_OVER;
+        }
+        return response;
+    }
+
+
+    protected abstract void doCancel();
 
     protected abstract IResponse doExecute() throws Exception;
 }

@@ -6,7 +6,7 @@ package com.lenny.framedemo.common.http;
  * 邮箱：649444395@qq.com
  */
 
-public interface ICall {
+public interface ICall extends ICancelable {
     int SATUS_NEW = 0;
     int STATUE_READY = 1;
     int STATUS_RUNNING = 3;
