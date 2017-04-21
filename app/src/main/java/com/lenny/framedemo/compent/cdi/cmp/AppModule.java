@@ -4,11 +4,14 @@ import android.content.Context;
 
 import com.lenny.framedemo.common.event.IEvent;
 import com.lenny.framedemo.common.event.impl.EventBusImpl;
+import com.lenny.framedemo.common.http.impl.okhttp3.CookiesManager;
+import com.lenny.framedemo.common.http.impl.okhttp3.ICookieStore;
 import com.lenny.framedemo.common.image.ImageDisplayLoader;
 import com.lenny.framedemo.common.image.glide.GlideImageLoader;
 import com.lenny.framedemo.common.parse.IParse;
 import com.lenny.framedemo.common.parse.impl.FastJsonParse;
 import com.lenny.framedemo.compent.ui.AppToast;
+import com.tencent.smtt.sdk.CookieManager;
 
 import javax.inject.Singleton;
 
@@ -55,5 +58,11 @@ public class AppModule {
     @Singleton
     protected AppToast provideToast() {
         return new AppToast(mContext);
+    }
+
+    @Provides
+    @Singleton
+    protected CookiesManager provideCookiesManager(CookieManager webCookieManager, ICookieStore cookieStore) {
+        return new CookiesManager(cookieStore,webCookieManager);
     }
 }

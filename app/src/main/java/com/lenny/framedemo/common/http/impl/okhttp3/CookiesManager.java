@@ -1,10 +1,10 @@
 package com.lenny.framedemo.common.http.impl.okhttp3;
 
 import android.text.TextUtils;
-import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 
 import com.lenny.framedemo.common.util.Strings;
+import com.tencent.smtt.sdk.CookieManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,8 @@ public class CookiesManager implements CookieJar {
     private CookieManager webCookieManager;
     private List<Cookie> empty = new ArrayList<>();
     private Pattern pattern = Pattern.compile("^*(.aixuedai.com|.aiyoumi.com)$");
+
+
 
     public ICookieStore getCookieStore() {
         return cookieStore;

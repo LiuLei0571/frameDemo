@@ -1,6 +1,7 @@
 package com.lenny.framedemo.compent.helper;
 
 import com.lenny.framedemo.common.event.IEvent;
+import com.lenny.framedemo.common.http.impl.okhttp3.CookiesManager;
 import com.lenny.framedemo.common.image.ImageDisplayLoader;
 import com.lenny.framedemo.common.parse.IParse;
 import com.lenny.framedemo.compent.cdi.CDI;
@@ -23,6 +24,8 @@ public final class CDIHelper {
     AppToast mAppToast;
     @Inject
     ImageDisplayLoader mImageDisplayLoader;
+    @Inject
+    CookiesManager mCookiesManager;
     private static CDIHelper instance = null;
 
     public CDIHelper() {
