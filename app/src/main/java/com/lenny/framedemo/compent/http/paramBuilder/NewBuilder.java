@@ -17,6 +17,6 @@ public class NewBuilder implements IParamBuilder {
         Map<String, Object> result = new HashMap<>();
         result.put("auth", authHeader);
         result.put("request", params);
-        return null;
+        return result;
     }
 }

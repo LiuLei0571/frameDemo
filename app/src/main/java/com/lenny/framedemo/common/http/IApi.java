@@ -1,5 +1,7 @@
 package com.lenny.framedemo.common.http;
 
+import com.lenny.framedemo.compent.http.IHost;
+
 import java.lang.reflect.Type;
 
 /**
@@ -20,7 +22,7 @@ public interface IApi {
     ParamType getParmType();
 
     String getDefaultParams();
-
+    IHost getHost();
     /**
      * 是否需要缓存
      *
