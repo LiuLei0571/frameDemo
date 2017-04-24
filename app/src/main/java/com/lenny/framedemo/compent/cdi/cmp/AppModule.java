@@ -1,7 +1,6 @@
 package com.lenny.framedemo.compent.cdi.cmp;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 
 import com.lenny.framedemo.common.event.IEvent;
 import com.lenny.framedemo.common.event.impl.EventBusImpl;
@@ -17,6 +16,7 @@ import com.lenny.framedemo.common.parse.IParse;
 import com.lenny.framedemo.common.parse.impl.FastJsonParse;
 import com.lenny.framedemo.compent.constants.Configs;
 import com.lenny.framedemo.compent.http.DemoHttpResultParse;
+import com.lenny.framedemo.compent.http.OkHttpRequestListener;
 import com.lenny.framedemo.compent.http.PersistentCookieStoreNew;
 import com.lenny.framedemo.compent.ui.AppToast;
 import com.tencent.smtt.sdk.CookieManager;
@@ -103,15 +103,23 @@ public class AppModule {
         }
         return schedule;
     }
+
     @Provides
     @Singleton
-    protected DemoHttpResultParse provideHttpResultParse(){
+    protected IRequestListener provideIRequestListener() {
+        return new OkHttpRequestListener();
+    }
+
+    @Provides
+    @Singleton
+    protected HttpResultParse provideHttpResultParse() {
         return new DemoHttpResultParse();
 
     }
+
     @Provides
     @Singleton
-    protected OkHttpClient provideOkHttpClient3(AssetManager assetManager, CookiesManager cookiesManager) {
+    protected OkHttpClient provideOkHttpClient3(CookiesManager cookiesManager) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .readTimeout(300, TimeUnit.SECONDS)
