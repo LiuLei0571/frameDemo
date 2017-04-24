@@ -10,8 +10,10 @@ import com.lenny.framedemo.common.image.ImageDisplayLoader;
 import com.lenny.framedemo.common.image.glide.GlideImageLoader;
 import com.lenny.framedemo.common.parse.IParse;
 import com.lenny.framedemo.common.parse.impl.FastJsonParse;
+import com.lenny.framedemo.compent.http.PersistentCookieStoreNew;
 import com.lenny.framedemo.compent.ui.AppToast;
 import com.tencent.smtt.sdk.CookieManager;
+import com.tencent.smtt.sdk.CookieSyncManager;
 
 import javax.inject.Singleton;
 
@@ -62,7 +64,23 @@ public class AppModule {
 
     @Provides
     @Singleton
+    protected ICookieStore provideICookieStore() {
+        PersistentCookieStoreNew cookieStoreNew = new PersistentCookieStoreNew();
+        return cookieStoreNew;
+    }
+
+    @Provides
+    @Singleton
     protected CookiesManager provideCookiesManager(CookieManager webCookieManager, ICookieStore cookieStore) {
-        return new CookiesManager(cookieStore,webCookieManager);
+        return new CookiesManager(cookieStore, webCookieManager);
+    }
+
+    @Provides
+    @Singleton
+    protected CookieManager provideCookieManager() {
+        CookieSyncManager.createInstance(mContext);
+        CookieManager webCookieManager = CookieManager.getInstance();
+        webCookieManager.setAcceptCookie(true);
+        return webCookieManager;
     }
 }

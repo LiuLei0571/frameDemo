@@ -25,7 +25,7 @@ public final class CDIHelper {
     @Inject
     ImageDisplayLoader mImageDisplayLoader;
     @Inject
-    CookiesManager mCookiesManager;
+    public CookiesManager mCookiesManager;
     private static CDIHelper instance = null;
 
     public CDIHelper() {

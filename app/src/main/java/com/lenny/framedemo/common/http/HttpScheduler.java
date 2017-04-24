@@ -3,6 +3,7 @@ package com.lenny.framedemo.common.http;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -63,7 +64,43 @@ public abstract class HttpScheduler {
         }
         return iResult;
     }
+    public String getResult(ICall iCall, String groupName, String taskName){
+        if (mIRequestListener != null) {
+            mIRequestListener.beforRequest(iCall);
+        }
+        String iResult=null;
+        IResponse response=null;
+        if (groupName != null && taskName != null) {
+            Map<String, ICall> calls = callPool.get(groupName);
+            if (calls == null) {
+                calls = new HashMap<>();
+                callPool.put(groupName, calls);
+            }
+            //向请求队列添加请求
+            calls.put(taskName, iCall);
+            try {
+                response = doExecute(iCall);
+            } catch (Exception e) {
+            }
+            calls.remove(taskName);
+        } else {
+            try {
+                response = doExecute(iCall);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
+        }
+        if (iResult == null && response != null) {
+            IApi api = iCall.getRequest().getAPi();
+            Type type=api.getResultType();
+            iResult =  response.getBody();
+        }
+        if (mIRequestListener != null) {
+            mIRequestListener.afterRequest(iCall, response);
+        }
+        return iResult;
+    }
     protected abstract IResponse doExecute(ICall iCall) throws Exception;
 
     public abstract ICall newCall(IRequest httpRequest);

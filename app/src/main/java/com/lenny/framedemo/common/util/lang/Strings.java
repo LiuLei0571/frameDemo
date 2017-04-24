@@ -1,4 +1,4 @@
-package com.lenny.framedemo.common.util;
+package com.lenny.framedemo.common.util.lang;
 
 /**
  * 用途：
@@ -9,4 +9,7 @@ package com.lenny.framedemo.common.util;
 public class Strings {
     public static final String EMPTY="";
     public static final String SEMICOLON=":";
+    public static final String QMARK="?";
+    public static final String COMMA=",";
+    public static final String AT="@";
 }
