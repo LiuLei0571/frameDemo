@@ -62,11 +62,6 @@ public class OkHttpSchedule extends HttpScheduler {
         if (httpRequest.getdefaultParams() != null) {
             urlStringBuilder.append(httpRequest.getdefaultParams());
         }
-//        Iterator<Map.Entry<String, String>> headers = httpRequest.getHeaders().entrySet().iterator();
-//        while (headers.hasNext()) {
-//            Map.Entry<String, String> header = headers.next();
-//            builder.addHeader(header.getKey(), header.getValue());
-//        }
         switch (method) {
             case Get:
                 if (params != null) {

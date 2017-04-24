@@ -7,7 +7,7 @@ package com.lenny.framedemo.common.http;
  */
 
 public interface IRequestListener {
-    void beforRequest(ICall iCall);
+    void beforeRequest(ICall iCall);
 
     void afterRequest(ICall call, IResponse response);
 }

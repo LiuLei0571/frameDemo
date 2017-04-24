@@ -27,9 +27,13 @@ public abstract class HttpScheduler {
         mHttpResultParse = httpResultParse;
     }
 
+    public void setIRequestListener(IRequestListener IRequestListener) {
+        mIRequestListener = IRequestListener;
+    }
+
     public IResult exexute(ICall iCall, String groupName, String taskName) {
         if (mIRequestListener != null) {
-            mIRequestListener.beforRequest(iCall);
+            mIRequestListener.beforeRequest(iCall);
         }
         IResult iResult = null;
         IResponse response = null;
@@ -66,7 +70,7 @@ public abstract class HttpScheduler {
     }
     public String getResult(ICall iCall, String groupName, String taskName){
         if (mIRequestListener != null) {
-            mIRequestListener.beforRequest(iCall);
+            mIRequestListener.beforeRequest(iCall);
         }
         String iResult=null;
         IResponse response=null;
