@@ -35,6 +35,10 @@ public class Api implements IApi {
         return url;
     }
 
+    public IParamBuilder getIParamBuilder() {
+        return mIParamBuilder;
+    }
+
     @Override
     public RequestMethod getMethod() {
         return mRequestMethod;

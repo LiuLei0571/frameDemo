@@ -1,6 +1,7 @@
 package com.lenny.framedemo.compent.helper;
 
 import com.lenny.framedemo.common.event.IEvent;
+import com.lenny.framedemo.common.http.HttpScheduler;
 import com.lenny.framedemo.common.http.impl.okhttp3.CookiesManager;
 import com.lenny.framedemo.common.image.ImageDisplayLoader;
 import com.lenny.framedemo.common.parse.IParse;
@@ -26,6 +27,8 @@ public final class CDIHelper {
     public ImageDisplayLoader mImageDisplayLoader;
     @Inject
     public CookiesManager mCookiesManager;
+    @Inject
+    public HttpScheduler mHttpScheduler;
     private static CDIHelper instance = null;
 
     public CDIHelper() {

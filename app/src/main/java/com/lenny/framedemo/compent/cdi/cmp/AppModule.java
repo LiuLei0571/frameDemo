@@ -16,6 +16,7 @@ import com.lenny.framedemo.common.image.glide.GlideImageLoader;
 import com.lenny.framedemo.common.parse.IParse;
 import com.lenny.framedemo.common.parse.impl.FastJsonParse;
 import com.lenny.framedemo.compent.constants.Configs;
+import com.lenny.framedemo.compent.http.DemoHttpResultParse;
 import com.lenny.framedemo.compent.http.PersistentCookieStoreNew;
 import com.lenny.framedemo.compent.ui.AppToast;
 import com.tencent.smtt.sdk.CookieManager;
@@ -102,7 +103,12 @@ public class AppModule {
         }
         return schedule;
     }
+    @Provides
+    @Singleton
+    protected DemoHttpResultParse provideHttpResultParse(){
+        return new DemoHttpResultParse();
 
+    }
     @Provides
     @Singleton
     protected OkHttpClient provideOkHttpClient3(AssetManager assetManager, CookiesManager cookiesManager) {
