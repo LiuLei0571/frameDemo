@@ -1,10 +1,11 @@
 package com.lenny.framedemo.common.http.impl.okhttp3;
 
 import com.lenny.framedemo.common.http.IResponse;
-import com.squareup.okhttp.Response;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import okhttp3.Response;
 
 /**
  * 用途：

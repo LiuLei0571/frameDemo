@@ -17,13 +17,13 @@ import javax.inject.Inject;
 
 public final class CDIHelper {
     @Inject
-    IParse mIParse;
+    public IParse mIParse;
     @Inject
-    IEvent mIEvent;
+    public IEvent mIEvent;
     @Inject
-    AppToast mAppToast;
+    public AppToast mAppToast;
     @Inject
-    ImageDisplayLoader mImageDisplayLoader;
+    public ImageDisplayLoader mImageDisplayLoader;
     @Inject
     public CookiesManager mCookiesManager;
     private static CDIHelper instance = null;

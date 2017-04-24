@@ -3,9 +3,9 @@ package com.lenny.framedemo.common.http.impl.okhttp3;
 import com.lenny.framedemo.common.http.ApiCall;
 import com.lenny.framedemo.common.http.IRequest;
 import com.lenny.framedemo.common.http.IResponse;
-import com.lenny.framedemo.common.http.impl.okhttp2.OkHttpResponse;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.Response;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 /**
  * 用途：

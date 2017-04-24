@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import com.lenny.framedemo.common.helper.JsonHelper;
 import com.lenny.framedemo.common.util.lang.Strings;
 import com.lenny.framedemo.project.App;
 
@@ -16,7 +17,7 @@ import java.util.Map;
  * 邮箱：649444395@qq.com
  */
 
-public enum Sps {defaults("aixuedai_share"), h5("aixuedai_h5"), cookie("cookie");
+public enum Sps {defaults("framedemo_share"), h5("framedemo_h5"), cookie("cookie");
     private SharedPreferences sharedPreferences;
 
     Sps(String spFile) {
@@ -43,8 +44,8 @@ public enum Sps {defaults("aixuedai_share"), h5("aixuedai_h5"), cookie("cookie")
         } else if (value instanceof Float) {
             editor.putFloat(key, (Float) value);
         } else {
-//            String str = JsonHelper.toJSONString(value);
-//            editor.putString(key, str);
+            String str = JsonHelper.toJSONString(value);
+            editor.putString(key, str);
         }
         editor.apply();
     }
@@ -95,12 +96,11 @@ public enum Sps {defaults("aixuedai_share"), h5("aixuedai_h5"), cookie("cookie")
         if (TextUtils.isEmpty(json)) {
             return null;
         }
-//        return JsonHelper.fromJson(json, type);
-        return null;
+        return JsonHelper.fromJson(json, type);
     }
 
     public void putBean(String key, Object bean) {
-//        getPrefs().edit().putString(key, JsonHelper.toJSONString(bean)).apply();
+        getPrefs().edit().putString(key, JsonHelper.toJSONString(bean)).apply();
     }
 
     public void remove(String key) {
