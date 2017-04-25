@@ -14,6 +14,7 @@ import com.lenny.framedemo.compent.cdi.cmp.ActivityComponent;
 import com.lenny.framedemo.compent.event.EmptyEvent;
 import com.lenny.framedemo.compent.helper.ActivityHelper;
 import com.lenny.framedemo.compent.helper.EventHelper;
+import com.lenny.framedemo.compent.helper.HttpHelper;
 import com.lenny.framedemo.compent.helper.LoadingHelper;
 
 import butterknife.ButterKnife;
@@ -130,6 +131,7 @@ public abstract class BaseActivity extends AppCompatActivity implements IView, I
         super.onDestroy();
         EventHelper.unRegister(this);
         ActivityHelper.destroy(this);
+        HttpHelper.cancelGroup(groupName());
         if (mPresenterConnector != null) {
             mPresenterConnector.destory();
             mPresenterConnector = null;

@@ -1,8 +1,13 @@
 package com.lenny.framedemo.compent.helper;
 
+import com.lenny.framedemo.common.helper.ThreadHelper;
 import com.lenny.framedemo.common.http.HttpScheduler;
+import com.lenny.framedemo.common.http.ICall;
+import com.lenny.framedemo.common.http.IRequest;
 import com.lenny.framedemo.common.http.IResult;
+import com.lenny.framedemo.common.thread.ThreadLocalHelper;
 import com.lenny.framedemo.compent.http.Api;
+import com.lenny.framedemo.compent.http.DemoHttpRequest;
 
 /**
  * 用途：
@@ -18,6 +23,30 @@ public class HttpHelper {
     }
 
     public static <T> IResult<T> execute(Api api, Object params) {
-        return null;
+
+        return execute(DemoHttpRequest.build(api).setParams(params));
+    }
+
+    private static <T> IResult<T> execute(IRequest demoHttpRequest) {
+        ICall icall = sHttpScheduler.newCall(demoHttpRequest);
+        ThreadLocalHelper.TaskInfo taskInfo = ThreadLocalHelper.getInfoThreadLocal();
+        IResult<T> result = sHttpScheduler.exexute(icall, taskInfo.groupName, taskInfo.taskName);
+        return result;
+    }
+
+    private static <T> IResult<T> executeString(IRequest demoHttpRequest) {
+        ICall icall = sHttpScheduler.newCall(demoHttpRequest);
+        ThreadLocalHelper.TaskInfo taskInfo = ThreadLocalHelper.getInfoThreadLocal();
+        IResult<T> result = sHttpScheduler.exexute(icall, taskInfo.groupName, taskInfo.taskName);
+        return result;
+    }
+
+    public static void cancelGroup(String groupName) {
+        ThreadHelper.postMain(new Runnable() {
+            @Override
+            public void run() {
+                sHttpScheduler.cacelGroup(groupName);
+            }
+        });
     }
 }

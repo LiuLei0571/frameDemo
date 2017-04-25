@@ -16,13 +16,39 @@ public class Result<T> implements IResult {
     private String errorInfo;
     private Type resultType;
     private int code;
+    private boolean success;
+    private String msg;
 
-    public Result() {
-    }
 
     public Result(T data, ErrorInfo meta) {
         this.data = data;
         this.meta = meta;
+    }
+
+    public static Result fail(String msg) {
+        Result result = new Result();
+        result.success = false;
+        result.msg = msg;
+        return result;
+    }
+
+    public boolean isSuccess() {
+        return meta.isSuccess();
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public String getMsg() {
+        return meta.getErrorInfo();
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    public Result() {
     }
 
     public T getData() {

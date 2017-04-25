@@ -2,6 +2,7 @@ package com.lenny.framedemo.compent.http;
 
 import com.lenny.framedemo.common.http.IApi;
 import com.lenny.framedemo.common.http.IRequest;
+import com.lenny.framedemo.common.http.ParamType;
 import com.lenny.framedemo.common.util.lang.Strings;
 import com.lenny.framedemo.compent.constants.ParamBuilders;
 
@@ -19,7 +20,7 @@ public class DemoHttpRequest implements IRequest {
     private Api mApi;
     private Object params;
     private IParamBuilder mIParamBuilder;
-    private boolean enableCache;
+    private Boolean enableCache;
 
     public DemoHttpRequest(Api api) {
         mApi = api;
@@ -33,6 +34,11 @@ public class DemoHttpRequest implements IRequest {
 
     public DemoHttpRequest setEnbleCache(boolean enableCache) {
         this.enableCache = enableCache;
+        return this;
+    }
+
+    public DemoHttpRequest setParams(Object params) {
+        this.params = params;
         return this;
     }
 
@@ -93,8 +99,15 @@ public class DemoHttpRequest implements IRequest {
 
     @Override
     public boolean enableCache() {
-        return enableCache;
-    }
+        ParamType paramType=mApi.getParmType();
+        if (ParamType.file==paramType) {
+            return  false;
+        }else if(enableCache!=null){
+            return  enableCache;
+        }else {
+            return mApi.enableCache();
+        }
+     }
 
     public static DemoHttpRequest build(Api api) {
         return new DemoHttpRequest(api);

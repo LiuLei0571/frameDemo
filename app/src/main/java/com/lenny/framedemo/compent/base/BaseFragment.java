@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.lenny.framedemo.compent.cdi.CDI;
 import com.lenny.framedemo.compent.cdi.cmp.FragmentComponent;
 import com.lenny.framedemo.compent.helper.EventHelper;
+import com.lenny.framedemo.compent.helper.HttpHelper;
 import com.lenny.framedemo.compent.helper.LoadingHelper;
 
 import butterknife.ButterKnife;
@@ -74,6 +75,7 @@ public abstract class BaseFragment extends Fragment implements IFragment, ILoadi
     public void onDestroy() {
         super.onDestroy();
         EventHelper.unRegister(this);
+        HttpHelper.cancelGroup(groupName());
         if (mPresenterConnector != null) {
             mPresenterConnector.destory();
             mPresenterConnector = null;
