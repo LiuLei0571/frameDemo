@@ -6,7 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.StrictMode;
 
-import com.lenny.framedemo.common.ThreadUtil;
+import com.lenny.framedemo.common.utils.ThreadUtil;
 import com.lenny.framedemo.compent.constants.Configs;
 import com.lenny.framedemo.compent.sys.AppInitInits;
 

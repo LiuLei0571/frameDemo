@@ -1,7 +1,7 @@
 package com.lenny.framedemo.common.helper;
 
 import com.lenny.framedemo.common.parse.IParse;
-import com.lenny.framedemo.common.util.lang.Strings;
+import com.lenny.framedemo.common.utils.lang.Strings;
 import com.lenny.framedemo.compent.helper.CDIHelper;
 
 import java.lang.reflect.Type;

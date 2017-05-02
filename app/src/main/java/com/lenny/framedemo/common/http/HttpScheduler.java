@@ -109,7 +109,7 @@ public abstract class HttpScheduler {
 
     public abstract ICall newCall(IRequest httpRequest);
 
-    public void cacelGroup(String groupName) {
+    public void cancelGroup(String groupName) {
         Map<String, ICall> calls = callPool.get(groupName);
         if (calls != null) {
             Set<Map.Entry<String, ICall>> entrySet = calls.entrySet();

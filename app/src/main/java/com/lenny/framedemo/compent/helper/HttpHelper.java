@@ -45,7 +45,7 @@ public class HttpHelper {
         ThreadHelper.postMain(new Runnable() {
             @Override
             public void run() {
-                sHttpScheduler.cacelGroup(groupName);
+                sHttpScheduler.cancelGroup(groupName);
             }
         });
     }

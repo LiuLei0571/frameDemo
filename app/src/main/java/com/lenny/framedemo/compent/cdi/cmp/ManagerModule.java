@@ -1,6 +1,11 @@
 package com.lenny.framedemo.compent.cdi.cmp;
 
+import com.lenny.framedemo.project.home.manager.HomeManager;
+
+import javax.inject.Singleton;
+
 import dagger.Module;
+import dagger.Provides;
 
 /**
  * 用途：
@@ -9,4 +14,9 @@ import dagger.Module;
  */
 @Module
 public class ManagerModule {
+    @Provides
+    @Singleton
+    protected HomeManager provideManager() {
+        return new HomeManager();
+    }
 }

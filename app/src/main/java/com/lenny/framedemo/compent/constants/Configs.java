@@ -13,4 +13,8 @@ public interface Configs {
     boolean LOG_E = Variants.LOG_E;
     boolean LOG_DB = Variants.LOG_DB;
     boolean RELEASE = Variants.RELEASE;
+    String BASE_URL = Variants.BASE_URL;
+    String EXPRESS_URL = Variants.BASE_URL_EXPRESS;
+    String IMAGE_URL = Variants.BASE_PIC_URL;
+
 }

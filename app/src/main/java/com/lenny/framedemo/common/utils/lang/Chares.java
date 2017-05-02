@@ -1,4 +1,4 @@
-package com.lenny.framedemo.common.util.lang;
+package com.lenny.framedemo.common.utils.lang;
 
 /**
  * 用途：

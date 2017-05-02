@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.lenny.framedemo.common.helper.JsonHelper;
-import com.lenny.framedemo.common.util.lang.Strings;
+import com.lenny.framedemo.common.utils.lang.Strings;
 import com.lenny.framedemo.project.App;
 
 import java.lang.reflect.Type;

@@ -19,10 +19,12 @@ public interface IApi {
 
     ContentType getContentType();
 
-    ParamType getParmType();
+    ParamType getParamType();
 
     String getDefaultParams();
+
     IHost getHost();
+
     /**
      * 是否需要缓存
      *

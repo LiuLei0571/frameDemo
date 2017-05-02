@@ -1,8 +1,10 @@
 package com.lenny.framedemo.common.http;
 
-import com.google.common.base.Charsets;
+
+import com.lenny.framedemo.common.utils.lang.Charsets;
 
 import java.nio.charset.Charset;
+
 
 /**
  * 用途：

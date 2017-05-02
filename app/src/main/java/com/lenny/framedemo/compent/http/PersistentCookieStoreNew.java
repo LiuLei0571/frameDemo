@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.lenny.framedemo.common.http.impl.okhttp3.CookieIterator;
 import com.lenny.framedemo.common.http.impl.okhttp3.EncodeUtil;
 import com.lenny.framedemo.common.http.impl.okhttp3.ICookieStore;
-import com.lenny.framedemo.common.util.lang.Strings;
+import com.lenny.framedemo.common.utils.lang.Strings;
 import com.lenny.framedemo.compent.constants.Sps;
 
 import java.util.ArrayList;

@@ -3,7 +3,7 @@ package com.lenny.framedemo.compent.http;
 import com.lenny.framedemo.common.http.IApi;
 import com.lenny.framedemo.common.http.IRequest;
 import com.lenny.framedemo.common.http.ParamType;
-import com.lenny.framedemo.common.util.lang.Strings;
+import com.lenny.framedemo.common.utils.lang.Strings;
 import com.lenny.framedemo.compent.constants.ParamBuilders;
 
 import java.util.HashMap;
@@ -99,7 +99,7 @@ public class DemoHttpRequest implements IRequest {
 
     @Override
     public boolean enableCache() {
-        ParamType paramType=mApi.getParmType();
+        ParamType paramType=mApi.getParamType();
         if (ParamType.file==paramType) {
             return  false;
         }else if(enableCache!=null){

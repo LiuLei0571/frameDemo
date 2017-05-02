@@ -1,4 +1,4 @@
-package com.lenny.framedemo.common;
+package com.lenny.framedemo.common.utils;
 
 import android.app.ActivityManager;
 import android.content.Context;

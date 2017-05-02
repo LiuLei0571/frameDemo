@@ -9,8 +9,8 @@ import com.lenny.framedemo.common.http.IRequest;
 import com.lenny.framedemo.common.http.IResponse;
 import com.lenny.framedemo.common.http.ParamType;
 import com.lenny.framedemo.common.http.RequestMethod;
-import com.lenny.framedemo.common.util.lang.Chares;
-import com.lenny.framedemo.common.util.lang.Strings;
+import com.lenny.framedemo.common.utils.lang.Chares;
+import com.lenny.framedemo.common.utils.lang.Strings;
 
 import java.io.File;
 import java.util.Iterator;
@@ -86,7 +86,7 @@ public class OkHttpSchedule extends HttpScheduler {
                 }
                 break;
             case Post:
-                ParamType paramType = api.getParmType();
+                ParamType paramType = api.getParamType();
                 switch (paramType) {
                     case normal:
                         FormBody.Builder formBodyBuilder = new FormBody.Builder();

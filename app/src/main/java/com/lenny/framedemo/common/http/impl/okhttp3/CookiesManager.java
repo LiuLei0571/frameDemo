@@ -3,7 +3,7 @@ package com.lenny.framedemo.common.http.impl.okhttp3;
 import android.text.TextUtils;
 import android.webkit.CookieSyncManager;
 
-import com.lenny.framedemo.common.util.lang.Strings;
+import com.lenny.framedemo.common.utils.lang.Strings;
 import com.tencent.smtt.sdk.CookieManager;
 
 import java.util.ArrayList;

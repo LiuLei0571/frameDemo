@@ -4,6 +4,7 @@ import com.lenny.framedemo.common.http.ContentType;
 import com.lenny.framedemo.common.http.IApi;
 import com.lenny.framedemo.common.http.ParamType;
 import com.lenny.framedemo.common.http.RequestMethod;
+import com.lenny.framedemo.compent.constants.Hosts;
 import com.lenny.framedemo.compent.constants.ParamBuilders;
 
 import java.lang.reflect.Type;
@@ -22,7 +23,7 @@ public class Api implements IApi {
     private ParamType mParamType;
     private ContentType mContentType;
     private IParamBuilder mIParamBuilder;
-    private IHost mIHost;
+    private IHost mIHost= Hosts.defaults;
     private boolean enableCache = true;
     private String url;
 
@@ -55,7 +56,7 @@ public class Api implements IApi {
     }
 
     @Override
-    public ParamType getParmType() {
+    public ParamType getParamType() {
         return mParamType;
     }
 
@@ -113,7 +114,7 @@ public class Api implements IApi {
         return api;
     }
 
-    public Api Post(String path, Type type) {
+    public static Api Post(String path, Type type) {
         Api api = new Api();
         api.path = path;
         api.mType = type;
