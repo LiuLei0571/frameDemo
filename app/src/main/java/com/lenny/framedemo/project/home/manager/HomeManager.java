@@ -15,5 +15,6 @@ import com.lenny.framedemo.compent.constants.Apis;
 public class HomeManager extends BaseManager {
     public IResult<Object> home(){
         return super.execute(Apis.home);
+
     }
 }
