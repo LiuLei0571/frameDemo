@@ -13,6 +13,7 @@ import com.lenny.framedemo.common.utils.lang.Chares;
 import com.lenny.framedemo.common.utils.lang.Strings;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -24,6 +25,7 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * 用途：
@@ -41,7 +43,7 @@ public class OkHttpSchedule extends HttpScheduler {
     }
 
     public OkHttpClient getClient() {
-        if (mClient != null) {
+        if (mClient == null) {
             mClient = new OkHttpClient();
         }
         return mClient;
@@ -54,10 +56,12 @@ public class OkHttpSchedule extends HttpScheduler {
 
     @Override
     public ICall newCall(IRequest httpRequest) {
+
         Map<String, Object> params = httpRequest.getParams();
         IApi api = httpRequest.getAPi();
         RequestMethod method = api.getMethod();
         StringBuilder urlStringBuilder = new StringBuilder(api.getUrl());
+        Map<String, String> headers = httpRequest.getHeaders();
         Request.Builder builder = new Request.Builder();
         switch (method) {
             case Get:
@@ -84,6 +88,7 @@ public class OkHttpSchedule extends HttpScheduler {
                 break;
             case Post:
                 ParamType paramType = api.getParamType();
+                headers.put("Accept", "application/json");
                 switch (paramType) {
                     case normal:
                         FormBody.Builder formBodyBuilder = new FormBody.Builder();
@@ -134,13 +139,19 @@ public class OkHttpSchedule extends HttpScheduler {
             default:
                 break;
         }
-        Map<String,String> headers=httpRequest.getHeaders();
         if (headers != null) {
             builder.headers(Headers.of(headers));
         }
-        Request request=builder.url(urlStringBuilder.toString()).build();
-        Call call=getClient().newCall(request);
-        OkHttpCall okHttpCall=new OkHttpCall(httpRequest,call);
-        return okHttpCall;
+        Request request = builder.url(urlStringBuilder.toString()).build();
+        Call call = getClient().newCall(request);
+        Response response= null;
+        try {
+            response = call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        response.body();
+//        OkHttpCall okHttpCall = new OkHttpCall(httpRequest, call);
+        return null;
     }
 }

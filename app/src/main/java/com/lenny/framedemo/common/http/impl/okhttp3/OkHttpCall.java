@@ -14,8 +14,8 @@ import okhttp3.Response;
  */
 
 public class OkHttpCall extends ApiCall {
-    protected Call call;
-
+    public Call call;
+    Response response;
     public OkHttpCall(IRequest httpRequest, Call call) {
         super(httpRequest);
         this.call = call;
@@ -30,7 +30,7 @@ public class OkHttpCall extends ApiCall {
 
     @Override
     protected IResponse doExecute() throws Exception {
-        Response response = call.execute();
+        response = call.execute();
         return new OkHttpResponse(response);
     }
 }

@@ -1,5 +1,8 @@
 package com.lenny.framedemo.project.home;
 
+import android.os.AsyncTask;
+
+import com.lenny.framedemo.common.http.IResponse;
 import com.lenny.framedemo.compent.base.BasePresenter;
 import com.lenny.framedemo.compent.base.IView;
 import com.lenny.framedemo.project.MainActivity;
@@ -16,6 +19,7 @@ import javax.inject.Inject;
 public class HomePresenter extends BasePresenter<MainActivity> {
     @Inject
     HomeManager manager;
+    String mal;
 
     @Inject
     public HomePresenter(IView iView) {
@@ -23,7 +27,14 @@ public class HomePresenter extends BasePresenter<MainActivity> {
     }
 
     public void loadData(String names) {
-        getView().showData(manager.home().toString());
+        new AsyncTask<String, Void, IResponse>() {
+            @Override
+            protected IResponse doInBackground(String... params) {
+                manager.home();
+                return null;
+            }
+        }.execute();
+        //        getView().showData(manager.home()!=null?"success":"false");
 
     }
 }

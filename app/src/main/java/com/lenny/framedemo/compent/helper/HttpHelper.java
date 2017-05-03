@@ -28,6 +28,9 @@ public class HttpHelper {
     }
 
     private static <T> IResult<T> execute(IRequest demoHttpRequest) {
+        if (!DeviceHelper.getNetworkState()) {
+            throw new RuntimeException();
+        }
         ICall icall = sHttpScheduler.newCall(demoHttpRequest);
         ThreadLocalHelper.TaskInfo taskInfo = ThreadLocalHelper.getInfoThreadLocal();
         IResult<T> result = sHttpScheduler.exexute(icall, "at", "group");

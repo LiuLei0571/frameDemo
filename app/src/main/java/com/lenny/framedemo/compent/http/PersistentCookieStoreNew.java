@@ -170,7 +170,7 @@ public class PersistentCookieStoreNew implements ICookieStore {
 
     public void remove(String host) {
         cookies.remove(host);
-        String cookieNameStr = cookiePrefs.getString(key, host);
+        String cookieNameStr = cookiePrefs.getString(host);
         if (cookieNameStr != null) {
             String[] cookieNameArr = TextUtils.split(cookieNameStr, Strings.COMMA);
             for (String cookieName : cookieNameArr) {
