@@ -21,6 +21,7 @@ public abstract class HttpScheduler {
 
     public HttpScheduler(HttpResultParse httpResultParse) {
         mHttpResultParse = httpResultParse;
+        callPool=new HashMap<>();
     }
 
     public void setHttpResultParse(HttpResultParse httpResultParse) {

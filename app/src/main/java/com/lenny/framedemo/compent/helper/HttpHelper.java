@@ -30,7 +30,7 @@ public class HttpHelper {
     private static <T> IResult<T> execute(IRequest demoHttpRequest) {
         ICall icall = sHttpScheduler.newCall(demoHttpRequest);
         ThreadLocalHelper.TaskInfo taskInfo = ThreadLocalHelper.getInfoThreadLocal();
-        IResult<T> result = sHttpScheduler.exexute(icall, taskInfo.groupName, taskInfo.taskName);
+        IResult<T> result = sHttpScheduler.exexute(icall, "at", "group");
         return result;
     }
 
