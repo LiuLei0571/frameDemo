@@ -7,7 +7,7 @@ package com.lenny.framedemo.common.thread;
  */
 
 public class ThreadLocalHelper {
-    private static ThreadLocal<TaskInfo> sInfoThreadLocal = new ThreadLocal<TaskInfo>();
+    private static ThreadLocal<TaskInfo> sInfoThreadLocal = new ThreadLocal<>();
 
     public static TaskInfo getInfoThreadLocal() {
         return sInfoThreadLocal.get();

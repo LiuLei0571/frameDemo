@@ -57,11 +57,8 @@ public class OkHttpSchedule extends HttpScheduler {
         Map<String, Object> params = httpRequest.getParams();
         IApi api = httpRequest.getAPi();
         RequestMethod method = api.getMethod();
-        StringBuilder urlStringBuilder = new StringBuilder();
+        StringBuilder urlStringBuilder = new StringBuilder(api.getUrl());
         Request.Builder builder = new Request.Builder();
-        if (httpRequest.getdefaultParams() != null) {
-            urlStringBuilder.append(httpRequest.getdefaultParams());
-        }
         switch (method) {
             case Get:
                 if (params != null) {
