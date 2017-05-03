@@ -11,5 +11,5 @@ import com.lenny.framedemo.compent.http.paramBuilder.NormalBuilder;
 
 public interface ParamBuilders {
     NewBuilder news = new NewBuilder();
-    NormalBuilder nomal = new NormalBuilder();
+    NormalBuilder normal = new NormalBuilder();
 }

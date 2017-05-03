@@ -56,7 +56,7 @@ public class PersistentCookieStoreNew implements ICookieStore {
             }
             String[] cookieNames = TextUtils.split((String) entry.getValue(), Strings.COMMA);
             for (String name : cookieNames) {
-                String encodedCookie = cookiePrefs.getString(name);
+                String encodedCookie = cookiePrefs.getString(key, name);
                 Cookie cookie = EncodeUtil.decodeCookie(encodedCookie);
                 if (cookie == null || isCookieExpires(cookie)) {//过期
                     continue;
@@ -170,7 +170,7 @@ public class PersistentCookieStoreNew implements ICookieStore {
 
     public void remove(String host) {
         cookies.remove(host);
-        String cookieNameStr = cookiePrefs.getString(host);
+        String cookieNameStr = cookiePrefs.getString(key, host);
         if (cookieNameStr != null) {
             String[] cookieNameArr = TextUtils.split(cookieNameStr, Strings.COMMA);
             for (String cookieName : cookieNameArr) {

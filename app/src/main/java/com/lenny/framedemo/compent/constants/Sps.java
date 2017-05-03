@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.lenny.framedemo.common.helper.JsonHelper;
-import com.lenny.framedemo.common.utils.lang.Strings;
 import com.lenny.framedemo.project.App;
 
 import java.lang.reflect.Type;
@@ -59,8 +58,8 @@ public enum Sps {defaults("framedemo_share"), h5("framedemo_h5"), cookie("cookie
         return result;
     }
 
-    public String getString(String key) {
-        return getPrefs().getString(key, Strings.EMPTY);
+    public String getString(String s, String key) {
+        return getPrefs().getString(s, key);
     }
 
     public void putString(String key, String value) {

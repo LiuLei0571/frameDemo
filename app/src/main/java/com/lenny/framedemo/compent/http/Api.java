@@ -26,6 +26,16 @@ public class Api implements IApi {
     private IHost mIHost= Hosts.defaults;
     private boolean enableCache = true;
     private String url;
+    private boolean isLogin;
+
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    public Api setLogin(boolean login) {
+        isLogin = login;
+        return this;
+    }
 
     @Override
     public String getUrl() {
@@ -110,7 +120,7 @@ public class Api implements IApi {
         api.mRequestMethod = RequestMethod.Get;
         api.mContentType = ContentType.APP_FORM_URLENCODED;
         api.mParamType = ParamType.normal;
-        api.mIParamBuilder = ParamBuilders.nomal;
+        api.mIParamBuilder = ParamBuilders.normal;
         return api;
     }
 
@@ -120,8 +130,8 @@ public class Api implements IApi {
         api.mType = type;
         api.mRequestMethod = RequestMethod.Post;
         api.mContentType = ContentType.APP_JSON;
-        api.mParamType = ParamType.normal;
-        api.mIParamBuilder = ParamBuilders.nomal;
+        api.mParamType = ParamType.json;
+        api.mIParamBuilder = ParamBuilders.normal;
         return api;
     }
 
@@ -132,7 +142,7 @@ public class Api implements IApi {
         api.mRequestMethod = RequestMethod.Post;
         api.mContentType = ContentType.APP_JSON;
         api.mParamType = ParamType.json;
-        api.mIParamBuilder = ParamBuilders.nomal;
+        api.mIParamBuilder = ParamBuilders.normal;
         return api;
     }
 
@@ -142,7 +152,7 @@ public class Api implements IApi {
         api.mRequestMethod = RequestMethod.Post;
         api.mContentType = ContentType.APP_OCTET_STREAM;
         api.mParamType = ParamType.file;
-        api.mIParamBuilder = ParamBuilders.nomal;
+        api.mIParamBuilder = ParamBuilders.normal;
         return api;
     }
 }

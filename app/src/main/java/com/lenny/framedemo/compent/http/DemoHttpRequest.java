@@ -3,8 +3,11 @@ package com.lenny.framedemo.compent.http;
 import com.lenny.framedemo.common.http.IApi;
 import com.lenny.framedemo.common.http.IRequest;
 import com.lenny.framedemo.common.http.ParamType;
+import com.lenny.framedemo.common.utils.encrypt.Md5Encrypt;
 import com.lenny.framedemo.common.utils.lang.Strings;
+import com.lenny.framedemo.compent.constants.Configs;
 import com.lenny.framedemo.compent.constants.ParamBuilders;
+import com.lenny.framedemo.compent.helper.SPHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,9 +63,9 @@ public class DemoHttpRequest implements IRequest {
     @Override
     public Map<String, Object> getParams() {
         if (mIParamBuilder == null) {
-            mIParamBuilder = ParamBuilders.nomal;
+            mIParamBuilder = ParamBuilders.normal;
         }
-        if (ParamBuilders.nomal == mIParamBuilder) {
+        if (ParamBuilders.normal == mIParamBuilder) {
             return mIParamBuilder.buildParams(getBaseParams(true), params);
         } else {
             return mIParamBuilder.buildParams(getBaseParams(false), params);
@@ -93,21 +96,46 @@ public class DemoHttpRequest implements IRequest {
 
     private Map<String, String> getBaseHeader() {
         Map<String, String> header = new HashMap<>();
-        //添加头部信息
+        long ts = System.currentTimeMillis();
+        StringBuffer buf = new StringBuffer();
+        if (!mApi.isLogin()) {
+            buf.append("token=").append("jinqiao@geH123");
+            buf.append("&ts=").append(ts);
+            String sign = Md5Encrypt.md5(buf.toString());
+            header.put("X-Sign", sign);
+            header.put("X-AppName", SPHelper.getString(Configs.APPNAME, "android.jinqiao.com"));
+            header.put("X-UserId", "-1");
+            header.put("X-TimeStamp", "" + ts);
+            header.put("X-UserType", SPHelper.getInt(Configs.USER_TYPE.TYPE) + "");
+        } else {
+            buf.append("userId=").append("-1");
+            buf.append("&appName=").append(SPHelper.getString(Configs.APPNAME));
+            buf.append("&token=").append("");
+            buf.append("&ts=").append(ts);
+            String sign = Md5Encrypt.md5(buf.toString());
+            header.put("X-UserId", "-1");
+            header.put("X-Sign", sign);
+            header.put("X-AppName", SPHelper.getString(Configs.APPNAME));
+            header.put("X-TimeStamp", "" + ts);
+            header.put("X-UserType", SPHelper.getInt(Configs.USER_TYPE.TYPE) + "");
+        }
+//        httpGet.addHeader("X-Locale", SPHelper.getString(Configs.LANGUAGE));
+        header.put("X-Locale", "CN");
         return header;
     }
 
+
     @Override
     public boolean enableCache() {
-        ParamType paramType=mApi.getParamType();
-        if (ParamType.file==paramType) {
-            return  false;
-        }else if(enableCache!=null){
-            return  enableCache;
-        }else {
+        ParamType paramType = mApi.getParamType();
+        if (ParamType.file == paramType) {
+            return false;
+        } else if (enableCache != null) {
+            return enableCache;
+        } else {
             return mApi.enableCache();
         }
-     }
+    }
 
     public static DemoHttpRequest build(Api api) {
         return new DemoHttpRequest(api);

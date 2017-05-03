@@ -10,5 +10,5 @@ import com.lenny.framedemo.compent.http.Api;
 
 
 public interface Apis {
-    Api home = Api.Post("banner/homePage.htm", Types.home);
+    Api home = Api.Post("banner/homePage.htm", Types.home).setLogin(false);
 }
