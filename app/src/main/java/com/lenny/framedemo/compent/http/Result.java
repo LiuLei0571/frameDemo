@@ -13,9 +13,7 @@ import java.lang.reflect.Type;
 public class Result<T> implements IResult {
     private T data;
     private ErrorInfo meta;
-    private String errorInfo;
     private Type resultType;
-    private int code;
     private boolean success;
     private String msg;
 
@@ -32,20 +30,15 @@ public class Result<T> implements IResult {
         return result;
     }
 
-    public boolean isSuccess() {
-        return meta.isSuccess();
-    }
 
-    public void setSuccess(boolean success) {
+    public Result setSuccess(boolean success) {
         this.success = success;
+        return this;
     }
 
-    public String getMsg() {
-        return meta.getErrorInfo();
-    }
-
-    public void setMsg(String msg) {
+    public Result setMsg(String msg) {
         this.msg = msg;
+        return this;
     }
 
     public Result() {
@@ -63,51 +56,40 @@ public class Result<T> implements IResult {
         return meta;
     }
 
-    public void setMeta(ErrorInfo meta) {
+    public Result setMeta(ErrorInfo meta) {
         this.meta = meta;
+        return this;
     }
 
-    public String getErrorInfo() {
-        return errorInfo;
-    }
 
-    public void setErrorInfo(String errorInfo) {
-        this.errorInfo = errorInfo;
-    }
 
     public Type getResultType() {
         return resultType;
     }
 
-    public void setResultType(Type resultType) {
+    public Result setResultType(Type resultType) {
         this.resultType = resultType;
+        return this;
     }
 
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    @Override
-    public String code() {
-        return null;
-    }
 
     @Override
     public Object data() {
-        return null;
+        return data;
     }
 
     @Override
     public boolean success() {
-        return meta.isSuccess();
+        return success;
     }
 
     @Override
-    public String json() {
-        return null;
+    public String msg() {
+        return msg;
+    }
+
+    @Override
+    public ErrorInfo errorInfo() {
+        return meta;
     }
 }

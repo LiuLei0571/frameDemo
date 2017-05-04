@@ -8,11 +8,12 @@ package com.lenny.framedemo.common.task;
 
 
 public interface ITaskCallBack<T> {
+
     void onBeforeCall();
 
     void onAfterCall();
 
-    void onComplete();
+    void onComplete(T result);
 
     void onException(Throwable throwable);
 

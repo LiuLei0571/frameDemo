@@ -22,7 +22,6 @@ import java.util.List;
 public class DemoHttpResultParse implements HttpResultParse {
     @Override
     public IResult parseResult(String json, IApi iapi) {
-        long startTime = System.currentTimeMillis();
         Type type = iapi.getResultType();
         Result result = null;
         if (iapi instanceof Api) {
@@ -49,7 +48,7 @@ public class DemoHttpResultParse implements HttpResultParse {
                         body = JSON.parseObject(body.toString(), type);
                     }
                 }
-                return new Result<>(body, errorInfo);
+                return new Result<>(body, errorInfo).setMeta(errorInfo).setMsg(errorInfo.getErrorInfo()).setSuccess(errorInfo.isSuccess());
             }
         } catch (Exception e) {
             return Result.fail("网络异常！");

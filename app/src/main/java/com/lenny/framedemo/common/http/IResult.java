@@ -1,5 +1,7 @@
 package com.lenny.framedemo.common.http;
 
+import com.lenny.framedemo.compent.http.ErrorInfo;
+
 /**
  * 用途：
  * Created by milk on 17/4/21.
@@ -7,11 +9,12 @@ package com.lenny.framedemo.common.http;
  */
 
 public interface IResult<T extends Object> {
-    String code();
 
     T data();
 
     boolean success();
 
-    String json();
+    String msg();
+
+    ErrorInfo errorInfo();
 }

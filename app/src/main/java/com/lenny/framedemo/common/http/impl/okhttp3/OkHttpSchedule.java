@@ -142,13 +142,6 @@ public class OkHttpSchedule extends HttpScheduler {
         }
         Request request = builder.url(urlStringBuilder.toString()).build();
         Call call = getClient().newCall(request);
-//        Response response= null;
-//        try {
-//            response = call.execute();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        response.body();
         OkHttpCall okHttpCall = new OkHttpCall(httpRequest, call);
         return okHttpCall;
     }
