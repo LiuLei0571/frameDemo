@@ -33,14 +33,14 @@ public class HttpHelper {
         }
         ICall icall = sHttpScheduler.newCall(demoHttpRequest);
         ThreadLocalHelper.TaskInfo taskInfo = ThreadLocalHelper.getInfoThreadLocal();
-        IResult<T> result = sHttpScheduler.exexute(icall, "at", "group");
+        IResult<T> result = sHttpScheduler.execute(icall, "at", "group");
         return result;
     }
 
     private static <T> IResult<T> executeString(IRequest demoHttpRequest) {
         ICall icall = sHttpScheduler.newCall(demoHttpRequest);
         ThreadLocalHelper.TaskInfo taskInfo = ThreadLocalHelper.getInfoThreadLocal();
-        IResult<T> result = sHttpScheduler.exexute(icall, taskInfo.groupName, taskInfo.taskName);
+        IResult<T> result = sHttpScheduler.execute(icall, taskInfo.groupName, taskInfo.taskName);
         return result;
     }
 

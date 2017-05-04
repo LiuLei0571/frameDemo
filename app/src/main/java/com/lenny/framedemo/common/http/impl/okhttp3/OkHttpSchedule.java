@@ -13,7 +13,6 @@ import com.lenny.framedemo.common.utils.lang.Chares;
 import com.lenny.framedemo.common.utils.lang.Strings;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -25,7 +24,6 @@ import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 
 /**
  * 用途：
@@ -144,14 +142,14 @@ public class OkHttpSchedule extends HttpScheduler {
         }
         Request request = builder.url(urlStringBuilder.toString()).build();
         Call call = getClient().newCall(request);
-        Response response= null;
-        try {
-            response = call.execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        response.body();
-//        OkHttpCall okHttpCall = new OkHttpCall(httpRequest, call);
-        return null;
+//        Response response= null;
+//        try {
+//            response = call.execute();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        response.body();
+        OkHttpCall okHttpCall = new OkHttpCall(httpRequest, call);
+        return okHttpCall;
     }
 }

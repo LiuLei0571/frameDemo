@@ -33,6 +33,11 @@ public class HomePresenter extends BasePresenter<MainActivity> {
                 manager.home();
                 return null;
             }
+
+            @Override
+            protected void onPostExecute(IResponse iResponse) {
+                super.onPostExecute(iResponse);
+            }
         }.execute();
         //        getView().showData(manager.home()!=null?"success":"false");
 

@@ -32,7 +32,7 @@ public abstract class HttpScheduler {
         mIRequestListener = IRequestListener;
     }
 
-    public IResult exexute(ICall iCall, String groupName, String taskName) {
+    public IResult execute(ICall iCall, String groupName, String taskName) {
         if (mIRequestListener != null) {
             mIRequestListener.beforeRequest(iCall);
         }
