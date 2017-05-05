@@ -2,4 +2,5 @@
 <resources>
     <color name="color_input_hint">#cccccc</color>
     <color name="color_text_major">#222222</color>
+    <color name="color_text_normal">#666666</color>
 </resources>

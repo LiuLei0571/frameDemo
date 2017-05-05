@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="size_normal_large">14dp</dimen>
+    <dimen name="size_normal_large">16dp</dimen>
+    <dimen name="text_large">18dp</dimen>
+    <dimen name="size_major_middle">14dp</dimen>
 </resources>

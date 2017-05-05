@@ -8,4 +8,10 @@
     <color name="btn_background">#44B0A0</color>
     <color name="title_background">#44B0A0</color>
     <color name="full_back">#f4f5f8</color>
+    <color name="divider_light">#999999</color>
+    <color name="color_btn_major">#FFD72D</color>
+    <!--重要按钮色块按下颜色-->
+    <color name="color_btn_major_deep">#EFC71B</color>
+    <color name="gray">#bbbbbb</color>
+    <color name="color_btn_cancel">#E3E3E3</color>
 </resources>

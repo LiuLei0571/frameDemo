@@ -1,6 +1,7 @@
 package com.lenny.framedemo.compent.cdi.cmp;
 
 import com.lenny.framedemo.compent.cdi.annotation.DialogScope;
+import com.lenny.framedemo.compent.ui.dialog.CommonDialog;
 
 import dagger.Subcomponent;
 
@@ -13,4 +14,6 @@ import dagger.Subcomponent;
 @DialogScope
 @Subcomponent(modules = {DialogModule.class})
 public interface DialogComponent {
+
+    void plus(CommonDialog commonDialog);
 }

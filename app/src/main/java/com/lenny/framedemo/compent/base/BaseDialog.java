@@ -56,13 +56,18 @@ public abstract class BaseDialog extends Dialog implements IView, ILoading, IDia
         if (saveInstance == null) {
             saveInstance = new Bundle();
         }
-        doInject(this);
+        doInject(dialogComponent);
         View view = getLayoutInflater().inflate(getRootView(), null);
         beforeViewBind(view);
         bindView(view);
         setContentView(view);
         afterViewBind(saveInstance);
         mPresenterContorl.bindPresenter(saveInstance, null);
+    }
+
+    @Override
+    public View findViewId(int id) {
+        return null;
     }
 
     @Override
@@ -132,6 +137,11 @@ public abstract class BaseDialog extends Dialog implements IView, ILoading, IDia
     }
 
     @Override
+    public void startActivity(Intent intent) {
+        getContext().startActivity(intent);
+    }
+
+    @Override
     public void startActivityForResult(Intent intent, int requestCode) {
         FragmentActivity activity = (FragmentActivity) getActivity();
         if (activity != null) {
@@ -144,7 +154,7 @@ public abstract class BaseDialog extends Dialog implements IView, ILoading, IDia
         return mBaseActivity.getLocalClassName() + this.toString();
     }
 
-    protected abstract DialogComponent doInject(BaseDialog baseDialog);
+    protected abstract void doInject(DialogComponent baseDialog);
 
     protected abstract int getRootView();
 }
