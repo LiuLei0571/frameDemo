@@ -2,10 +2,11 @@ package com.lenny.framedemo.compent.web.view.widget;
 
 import android.app.Activity;
 import android.net.Uri;
-import android.webkit.GeolocationPermissions;
-import android.webkit.ValueCallback;
-import android.webkit.WebView;
 import android.widget.ProgressBar;
+
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebView;
 
 /**
  * 用途：
@@ -24,9 +25,9 @@ public abstract class CommonWebChromeClient extends WebViewEx.WebChromeClientEx 
     }
 
     @Override
-    public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
-        callback.invoke(origin, true, false);
-        super.onGeolocationPermissionsShowPrompt(origin, callback);
+    public void onGeolocationPermissionsShowPrompt(String s, GeolocationPermissionsCallback geolocationPermissionsCallback) {
+        geolocationPermissionsCallback.invoke(s,true,false);
+        super.onGeolocationPermissionsShowPrompt(s, geolocationPermissionsCallback);
     }
 
     @Override

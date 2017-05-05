@@ -2,6 +2,7 @@ package com.lenny.framedemo.compent.base;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 
 import com.lenny.framedemo.compent.event.EmptyEvent;
 import com.lenny.framedemo.compent.helper.EventHelper;
@@ -78,9 +79,14 @@ public class BasePresenter<T extends IView> extends BaseViewPresenter<T> {
     }
 
     public void onSaveInstanceState(Bundle outSate) {
-        
+
     }
 
     public void onActivityForResult(int requestCode, int resultCode, Intent data) {
     }
+
+    protected FragmentManager getSupportsFragmentManager() {
+        return mBaseActivity.getSupportFragmentManager();
+    }
+
 }

@@ -8,13 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.webkit.DownloadListener;
-import android.webkit.JsPromptResult;
-import android.webkit.JsResult;
 import android.webkit.MimeTypeMap;
-import android.webkit.ValueCallback;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ProgressBar;
 
 import com.lenny.framedemo.R;
@@ -34,6 +28,12 @@ import com.lenny.framedemo.compent.web.utils.WebUtil;
 import com.lenny.framedemo.compent.web.view.widget.CommonWebChromeClient;
 import com.lenny.framedemo.compent.web.view.widget.CommonWebView;
 import com.lenny.framedemo.compent.web.view.widget.CommonWebViewClient;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.DownloadListener;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
 
 import java.util.HashMap;
 import java.util.Map;

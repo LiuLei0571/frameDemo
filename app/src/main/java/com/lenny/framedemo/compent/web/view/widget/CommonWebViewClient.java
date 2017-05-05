@@ -6,8 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.ProgressBar;
+
+import com.tencent.smtt.sdk.WebView;
 
 /**
  * 用途：

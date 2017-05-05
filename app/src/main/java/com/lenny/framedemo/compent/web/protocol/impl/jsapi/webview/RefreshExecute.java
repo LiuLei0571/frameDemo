@@ -1,12 +1,12 @@
 package com.lenny.framedemo.compent.web.protocol.impl.jsapi.webview;
 
-import android.webkit.WebView;
 
 import com.lenny.framedemo.compent.web.WebInterface;
 import com.lenny.framedemo.compent.web.callback.ICallBack;
 import com.lenny.framedemo.compent.web.protocol.BaseProtocolInstance;
 import com.lenny.framedemo.compent.web.protocol.param.WebRefreshParam;
 import com.lenny.framedemo.compent.web.utils.WebUtil;
+import com.tencent.smtt.sdk.WebView;
 
 
 /**

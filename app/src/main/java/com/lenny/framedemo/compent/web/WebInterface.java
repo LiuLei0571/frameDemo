@@ -1,10 +1,10 @@
 package com.lenny.framedemo.compent.web;
 
-import android.webkit.WebView;
 
 import com.lenny.framedemo.compent.base.IAct;
 import com.lenny.framedemo.compent.web.bean.WebCall;
 import com.lenny.framedemo.compent.web.protocol.param.UriBean;
+import com.tencent.smtt.sdk.WebView;
 
 /**
  * 用途：
