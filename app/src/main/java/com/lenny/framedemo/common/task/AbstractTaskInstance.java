@@ -92,14 +92,13 @@ public class AbstractTaskInstance<Result> extends FutureTask<Result> implements 
     @Override
     public void run() {
         if (callBack != null) {
-            callBack.onBeforeCall();
+            onBeforeCall();
         }
         ThreadLocalHelper.setInfoThreadLocal(groupName(), taskName());
         try {
             super.run();
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
 
         }
     }

@@ -28,8 +28,8 @@ public class HomePresenter extends BasePresenter<MainActivity> {
         super(iView);
     }
 
-    public void loadData(String names) {
-        submitTask("taskGroup", new ApiTask<List<ModelPage>>() {
+    public void loadData() {
+        submitTask("taskGroup", new ApiTask<List<ModelPage>>(getILoading()) {
             @Override
             public IResult<Object> onBackGround() throws Exception {
                 return manager.home();
@@ -37,7 +37,11 @@ public class HomePresenter extends BasePresenter<MainActivity> {
 
             @Override
             public void onSuccess(IResult<List<ModelPage>> result) {
-                getView().showData(result.data().toString());
+                super.onSuccess(result);
+                if (result.data() != null) {
+                    getView().showData(result.data().get(1).toString());
+
+                }
             }
         });
     }

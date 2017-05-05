@@ -21,22 +21,18 @@ public class Progress {
     private static Dialog mProgress = null;
 
     public static Dialog show(Context context, String msg) {
-        try {
-            dismiss();
-            mProgress = new Dialog(context, R.style.LoadingDialog);
-            mProgress.setCancelable(false);
-            mProgress.setTitle(null);
-            LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.dialog_progress, null);
-            view.setTag(new Date().getTime());
-            if (!TextUtils.isEmpty(msg)) {
-                ((TextView) view.findViewById(R.id.message)).setText(msg);
-            }
-            mProgress.setContentView(view);
-            mProgress.show();
-        } catch (Exception e) {
-            e.printStackTrace();
+        dismiss();
+        mProgress = new Dialog(context, R.style.LoadingDialog);
+        mProgress.setCancelable(false);
+        mProgress.setTitle(null);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.dialog_progress, null);
+        view.setTag(new Date().getTime());
+        if (!TextUtils.isEmpty(msg)) {
+            ((TextView) view.findViewById(R.id.message)).setText(msg);
         }
+        mProgress.setContentView(view);
+        mProgress.show();
         return mProgress;
     }
 

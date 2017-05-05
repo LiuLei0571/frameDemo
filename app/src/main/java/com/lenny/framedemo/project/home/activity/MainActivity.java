@@ -31,8 +31,7 @@ public class MainActivity extends TempleActivity {
 
     @Override
     public void afterViewBind(Bundle saveInstanceState) {
-        super.afterViewBind(saveInstanceState);
-        presenter.loadData("搞起来");
+        presenter.loadData();
     }
 
     public void showData(String names) {

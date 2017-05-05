@@ -24,6 +24,7 @@ public class SimpleCallback<T> implements ITaskCallbackWithLoading<T> {
             loading.showLoading();
 
         }
+
     }
 
     @Override
@@ -31,6 +32,7 @@ public class SimpleCallback<T> implements ITaskCallbackWithLoading<T> {
         if (loading != null) {
             loading.dismissLoading();
         }
+
     }
 
     public void postProgressInfo(final Object object) {

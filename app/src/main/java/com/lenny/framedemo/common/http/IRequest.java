@@ -13,8 +13,7 @@ public interface IRequest {
 
     IApi getAPi();
 
-    String getdefaultParams();
-
+    String getDefaultParams();
     Map<String, String> getHeaders();
 
     boolean enableCache();

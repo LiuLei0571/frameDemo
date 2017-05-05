@@ -84,7 +84,7 @@ public class DemoHttpRequest implements IRequest {
     }
 
     @Override
-    public String getdefaultParams() {
+    public String getDefaultParams() {
         return Strings.EMPTY;
     }
 
