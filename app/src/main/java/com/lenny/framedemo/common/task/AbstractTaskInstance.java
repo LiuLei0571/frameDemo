@@ -6,6 +6,7 @@ import com.lenny.framedemo.common.helper.ThreadHelper;
 import com.lenny.framedemo.common.thread.ThreadLocalHelper;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
 
 /**
@@ -15,7 +16,7 @@ import java.util.concurrent.FutureTask;
  */
 
 
-public class AbStrackTaskInstance<Result> extends FutureTask<Result> implements ITaskInstance, IGroupTaskInstance, IPriorityTask {
+public class AbstractTaskInstance<Result> extends FutureTask<Result> implements ITaskInstance, IGroupedTaskInstance, IPriorityTask {
     protected String taskName = DEFAULT_TASK_NAME;
     protected String groupName = DEFAULT_GROUP_NAME;
     protected ITaskCallBack<Result> callBack;
@@ -23,21 +24,9 @@ public class AbStrackTaskInstance<Result> extends FutureTask<Result> implements 
     protected int dualPolicy = DISCARD_NEW;
     protected int priority = PRIOR_NOMAL;
     protected int status = STATUS_NEW;
-    /**
-     * 任务提交的时间
-     */
-    private long submitTime;
-    /**
-     * 开始执行时间
-     */
-    private long beginExceute;
-    /**
-     * 结束执行时间
-     */
-    private long endExceute;
 
 
-    public AbStrackTaskInstance(final ITaskBackGround<Result> callable, final ITaskCallBack<Result> callBack) {
+    public AbstractTaskInstance(final ITaskBackGround<Result> callable, final ITaskCallBack<Result> callBack) {
         super(new Callable<Result>() {
             @Override
             public Result call() throws Exception {
@@ -48,7 +37,7 @@ public class AbStrackTaskInstance<Result> extends FutureTask<Result> implements 
 
     }
 
-    public AbStrackTaskInstance(@NonNull Runnable runnable) {
+    public AbstractTaskInstance(@NonNull Runnable runnable) {
         super(runnable, null);
     }
 
@@ -64,10 +53,26 @@ public class AbStrackTaskInstance<Result> extends FutureTask<Result> implements 
     }
 
     public void onAfterCall() {
+        try {
+            callBack.onAfterCall();
+
+        } catch (Exception e) {
+
+        }
 
     }
 
     public void onComplete() {
+        try {
+            Result result = get();
+            if (result != null) {
+                callBack.onComplete(result);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -76,7 +81,12 @@ public class AbStrackTaskInstance<Result> extends FutureTask<Result> implements 
     }
 
     public void onCancelled() {
+        try {
+            callBack.onCancelled();
 
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
@@ -85,12 +95,43 @@ public class AbStrackTaskInstance<Result> extends FutureTask<Result> implements 
             callBack.onBeforeCall();
         }
         ThreadLocalHelper.setInfoThreadLocal(groupName(), taskName());
-        super.run();
+        try {
+            super.run();
+
+        }
+        catch (Exception e){
+
+        }
     }
 
     @Override
     protected void done() {
-        super.done();
+        if (callBack != null) {
+            ThreadHelper.postMain(new Runnable() {
+                @Override
+                public void run() {
+                    onAfterCall();
+                    if (isCancelled()) {
+                        onCancelled();
+                    } else {
+                        onComplete();
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        AbstractTaskInstance that = (AbstractTaskInstance) obj;
+
+        return taskName.equals(that.taskName) && groupName.equals(that.groupName);
     }
 
     @Override
@@ -100,17 +141,17 @@ public class AbStrackTaskInstance<Result> extends FutureTask<Result> implements 
 
     @Override
     public int getPriority() {
-        return 0;
+        return priority;
     }
 
     @Override
     public int getStatus() {
-        return 0;
+        return status;
     }
 
     @Override
-    public int setStatus(int status) {
-        return 0;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     @Override
@@ -120,12 +161,12 @@ public class AbStrackTaskInstance<Result> extends FutureTask<Result> implements 
 
     @Override
     public boolean serialExecute() {
-        return false;
+        return serialExecute;
     }
 
     @Override
     public int dualPolicy() {
-        return 0;
+        return dualPolicy;
     }
 
     @Override

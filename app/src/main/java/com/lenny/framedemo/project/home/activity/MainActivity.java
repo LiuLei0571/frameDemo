@@ -1,4 +1,4 @@
-package com.lenny.framedemo.project;
+package com.lenny.framedemo.project.home.activity;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -6,7 +6,7 @@ import android.widget.TextView;
 import com.lenny.framedemo.R;
 import com.lenny.framedemo.compent.base.TempleActivity;
 import com.lenny.framedemo.compent.cdi.cmp.ActivityComponent;
-import com.lenny.framedemo.project.home.HomePresenter;
+import com.lenny.framedemo.project.home.presenter.HomePresenter;
 
 import javax.inject.Inject;
 

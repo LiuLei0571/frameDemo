@@ -2,7 +2,7 @@ package com.lenny.framedemo.compent.helper;
 
 import android.app.Activity;
 
-import com.lenny.framedemo.project.MainActivity;
+import com.lenny.framedemo.project.home.activity.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;

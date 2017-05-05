@@ -14,6 +14,7 @@ import com.lenny.framedemo.common.image.ImageDisplayLoader;
 import com.lenny.framedemo.common.image.glide.GlideImageLoader;
 import com.lenny.framedemo.common.parse.IParse;
 import com.lenny.framedemo.common.parse.impl.FastJsonParse;
+import com.lenny.framedemo.common.task.TaskScheduler;
 import com.lenny.framedemo.compent.constants.Configs;
 import com.lenny.framedemo.compent.http.DemoHttpResultParse;
 import com.lenny.framedemo.compent.http.OkHttpRequestListener;
@@ -126,5 +127,12 @@ public class AppModule {
                 .writeTimeout(300, TimeUnit.SECONDS)
                 .cookieJar(cookiesManager);
         return builder.build();
+    }
+
+    @Provides
+    @Singleton
+    protected TaskScheduler provideTaskScheduler() {
+        TaskScheduler taskScheduler = TaskScheduler.instance();
+        return taskScheduler;
     }
 }

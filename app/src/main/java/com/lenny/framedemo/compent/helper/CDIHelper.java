@@ -5,6 +5,7 @@ import com.lenny.framedemo.common.http.HttpScheduler;
 import com.lenny.framedemo.common.http.impl.okhttp3.CookiesManager;
 import com.lenny.framedemo.common.image.ImageDisplayLoader;
 import com.lenny.framedemo.common.parse.IParse;
+import com.lenny.framedemo.common.task.TaskScheduler;
 import com.lenny.framedemo.compent.cdi.CDI;
 import com.lenny.framedemo.compent.ui.AppToast;
 
@@ -25,6 +26,8 @@ public final class CDIHelper {
     public AppToast mAppToast;
     @Inject
     public ImageDisplayLoader mImageDisplayLoader;
+    @Inject
+    public TaskScheduler mTaskScheduler;
     @Inject
     public CookiesManager mCookiesManager;
     @Inject

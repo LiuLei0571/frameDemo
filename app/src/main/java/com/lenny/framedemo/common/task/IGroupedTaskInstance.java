@@ -7,7 +7,7 @@ package com.lenny.framedemo.common.task;
  */
 
 
-public interface IGroupTaskInstance extends ITaskInstance, IGroup {
+public interface IGroupedTaskInstance extends ITaskInstance, IGroup {
     String DEFAULT_TASK_NAME = "at";
     /**
      * 丢弃新任务

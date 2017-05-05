@@ -17,5 +17,5 @@ public interface ITaskInstance extends Runnable {
 
     int getStatus();
 
-    int setStatus(int status);
+    void setStatus(int status);
 }
