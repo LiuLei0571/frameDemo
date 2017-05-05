@@ -1,9 +1,11 @@
 package com.lenny.framedemo.compent.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,17 +60,34 @@ public abstract class BaseFragment extends Fragment implements IFragment, ILoadi
     @Override
     public void onResume() {
         super.onResume();
-        if (mPresenterConnector != null) {
-            mPresenterConnector.onResume();
+        if (mView != null) {
+            mView.setFocusableInTouchMode(true);
+            mView.requestFocus();
+            mView.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    if (initBackPress() && keyCode == KeyEvent.KEYCODE_BACK &&
+                            event.getAction() == KeyEvent.ACTION_UP) {
+                        onBackPressed();
+                        return true;
+                    }
+                    return false;
+                }
+            });
         }
+    }
+
+    protected void onBackPressed() {
+    }
+
+    protected boolean initBackPress() {
+        return false;
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        if (mPresenterConnector != null) {
-            mPresenterConnector.onPause();
-        }
+
     }
 
     @Override
@@ -168,11 +187,20 @@ public abstract class BaseFragment extends Fragment implements IFragment, ILoadi
         LoadingHelper.dismiss();
     }
 
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof BaseActivity) {
             mActivity = (BaseActivity) context;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (mPresenterConnector != null) {
+            mPresenterConnector.onActivityForResult(requestCode, resultCode, data);
         }
     }
 
