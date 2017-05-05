@@ -223,6 +223,5 @@ public abstract class BaseFragment extends Fragment implements IFragment, ILoadi
 
     protected abstract int getRootViewId();
 
-    protected abstract void doInject(IFragment fg);
 }
 

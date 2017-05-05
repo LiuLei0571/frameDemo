@@ -9,7 +9,6 @@ import com.lenny.framedemo.compent.cdi.cmp.FragmentComponent;
  */
 
 public interface IFragment extends IView {
-    String getTrackRemark();
 
     void doInject(FragmentComponent component);
 }

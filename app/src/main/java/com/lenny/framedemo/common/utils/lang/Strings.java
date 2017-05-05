@@ -12,4 +12,10 @@ public class Strings {
     public static final String QMARK="?";
     public static final String COMMA=",";
     public static final String AT="@";
+    public static final String AND="&";
+    public static final String EQUAL="=";
+    public static final String NULL_STR = "null";
+
+
+
 }

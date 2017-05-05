@@ -9,7 +9,7 @@ import com.lenny.framedemo.common.http.IRequest;
 import com.lenny.framedemo.common.http.IResponse;
 import com.lenny.framedemo.common.http.ParamType;
 import com.lenny.framedemo.common.http.RequestMethod;
-import com.lenny.framedemo.common.utils.lang.Chares;
+import com.lenny.framedemo.common.utils.lang.Chars;
 import com.lenny.framedemo.common.utils.lang.Strings;
 
 import java.io.File;
@@ -65,19 +65,19 @@ public class OkHttpSchedule extends HttpScheduler {
             case Get:
                 if (params != null) {
                     if (urlStringBuilder.lastIndexOf(Strings.QMARK) == -1) {
-                        urlStringBuilder.append(Chares.QMARK);
+                        urlStringBuilder.append(Chars.QMARK);
                     } else {
-                        urlStringBuilder.append(Chares.AND);
+                        urlStringBuilder.append(Chars.AND);
                     }
                     Iterator<Map.Entry<String, Object>> it = params.entrySet().iterator();
 
                     while (it.hasNext()) {
                         Map.Entry<String, Object> entry = it.next();
                         urlStringBuilder.append(entry.getKey())
-                                .append(Chares.EQUAL)
+                                .append(Chars.EQUAL)
                                 .append(entry.getValue());
                         if (it.hasNext()) {
-                            urlStringBuilder.append(Chares.AND);
+                            urlStringBuilder.append(Chars.AND);
                         }
 
                     }

@@ -26,4 +26,17 @@ public interface Configs {
         int EXPRESS = 2;
         int COURIER = 3;
     }
+
+
+
+    String URL_PRE = "axd://";
+    String JS_INTERFACE = "appJS";
+    String JS_INTERFACE_EXECUTE = JS_INTERFACE + ".postMessage";
+    String JS_INTERFACE_GETRESULT = JS_INTERFACE + ".getResult";
+    int PAGESIZE = 20;
+
+    /**
+     * 当返回的对象长度过长则通过变相方式获取结果
+     */
+    int MAX_H5_ARG_LENGTH = 400;
 }

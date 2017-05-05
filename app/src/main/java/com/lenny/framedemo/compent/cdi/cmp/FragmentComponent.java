@@ -1,6 +1,7 @@
 package com.lenny.framedemo.compent.cdi.cmp;
 
 import com.lenny.framedemo.compent.cdi.annotation.FragmentScope;
+import com.lenny.framedemo.compent.web.view.fragment.WebViewFragment;
 
 import dagger.Subcomponent;
 
@@ -12,4 +13,5 @@ import dagger.Subcomponent;
 @FragmentScope
 @Subcomponent(modules = {FragmentModule.class})
  public interface FragmentComponent {
+    void plus(WebViewFragment webViewFragment);
 }

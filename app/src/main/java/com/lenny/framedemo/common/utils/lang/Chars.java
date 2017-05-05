@@ -6,12 +6,15 @@ package com.lenny.framedemo.common.utils.lang;
  * 邮箱：649444395@qq.com
  */
 
-public interface Chares {
+public interface Chars {
     char QMARK = '?';
     char AND = '&';
     char UNDER_LINE = '_';
     char y = 'y';
     char n = 'n';
-    char EQUAL = '=';
     char COMMA = ',';
+    char SIGLE_QUOTE = '\'';
+    char DOUBLE_QUOTE = '"';
+    char WRAP='\n';
+    char EQUAL='=';
 }
