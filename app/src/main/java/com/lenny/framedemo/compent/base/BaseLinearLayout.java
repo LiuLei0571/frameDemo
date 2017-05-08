@@ -32,7 +32,7 @@ public abstract class BaseLinearLayout extends LinearLayout implements IWidgetVi
         init(context, attrs);
     }
 
-    private void init(Context context, AttributeSet mAttributeSet) {
+    public void init(Context context, AttributeSet mAttributeSet) {
     }
 
     @Override
@@ -65,5 +65,9 @@ public abstract class BaseLinearLayout extends LinearLayout implements IWidgetVi
     @Override
     public void afterViewBind(View view) {
 
+    }
+
+    public String getString(int stringId) {
+        return getContext().getString(stringId);
     }
 }

@@ -14,4 +14,5 @@
     <color name="color_btn_major_deep">#EFC71B</color>
     <color name="gray">#bbbbbb</color>
     <color name="color_btn_cancel">#E3E3E3</color>
+    <color name="color_line">#e4e4e4</color>
 </resources>
